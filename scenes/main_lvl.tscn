@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7nkxb1ow5u8p"]
+
+[ext_resource type="Script" uid="uid://b8s1u4ooxnf4h" path="res://scripts/levels_button.gd" id="1_tacm2"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_tacm2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="level one" type="Button" parent="CanvasLayer"]
+offset_left = 41.0
+offset_top = 43.0
+offset_right = 473.1
+offset_bottom = 159.0
+text = "level ONE"
+
+[node name="level one2" type="Button" parent="CanvasLayer"]
+offset_left = 617.0
+offset_top = 48.0
+offset_right = 1049.1
+offset_bottom = 164.0
+text = "level tow
+"
+
+[connection signal="pressed" from="CanvasLayer/level one" to="." method="_on_level_one_pressed"]
+[connection signal="pressed" from="CanvasLayer/level one2" to="." method="_on_level_one_2_pressed"]

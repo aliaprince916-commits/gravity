@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6y12y7blqri6"]
+
+[ext_resource type="Shader" uid="uid://ubi6513q8eny" path="res://scripts/lvl_prtotype_back.gdshader" id="1_ntoob"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_srdec"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j0drg"]
+noise = SubResource("FastNoiseLite_srdec")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xh4mi"]
+shader = ExtResource("1_ntoob")
+shader_parameter/noise_img = SubResource("NoiseTexture2D_j0drg")
+shader_parameter/speed = 0.05
+shader_parameter/noise_scale = 1.0
+shader_parameter/alpha_intensity = 0.30000001425
+
+[node name="fog" type="ColorRect"]
+z_index = 5
+material = SubResource("ShaderMaterial_xh4mi")
+offset_left = -1.0
+offset_top = -280.0
+offset_right = 498.0
+offset_bottom = -1.0

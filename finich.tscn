@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://o1mo716646s0"]
+
+[ext_resource type="Script" uid="uid://dfk88i6s7lqku" path="res://finch.gd" id="1_s4itu"]
+[ext_resource type="Texture2D" uid="uid://dddvprb3ojpgv" path="res://assets/p0lJDM-removebg-preview.png" id="2_3ort8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0lmn"]
+size = Vector2(21, 52)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_s4itu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.34781694, 0.34781697, 0.3478169, 1)
+position = Vector2(-7.500001, 0)
+scale = Vector2(0.47916666, 1)
+texture = ExtResource("2_3ort8")
+region_enabled = true
+region_rect = Rect2(331.58594, 76.49847, 48.789, 54.59443)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8.5, 0)
+shape = SubResource("RectangleShape2D_d0lmn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

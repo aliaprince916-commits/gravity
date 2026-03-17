@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://da4i8liabeqt2"]
+[gd_scene load_steps=13 format=4 uid="uid://da4i8liabeqt2"]
 
 [ext_resource type="PackedScene" uid="uid://cfmjgl8haoem3" path="res://scenes/player.tscn" id="1_hpibf"]
 [ext_resource type="Texture2D" uid="uid://cugvtqiookld" path="res://assets/Textures&trees.png" id="2_6v2h5"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cs3jt8mg6loe5" path="res://scenes/textures&trees.tscn" id="6_c8h66"]
 [ext_resource type="PackedScene" uid="uid://bin648v8uofu5" path="res://scenes/rain.tscn" id="7_c8h66"]
 [ext_resource type="PackedScene" uid="uid://b5rdv8xu15dff" path="res://scenes/monster.tscn" id="9_j0drg"]
+[ext_resource type="PackedScene" uid="uid://o1mo716646s0" path="res://finich.tscn" id="10_xh4mi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kbqdv"]
 texture = ExtResource("2_6v2h5")
@@ -206,3 +207,6 @@ offset_left = -18.0
 offset_top = -277.0
 offset_right = 481.0
 offset_bottom = 2.0
+
+[node name="Area2D" parent="." instance=ExtResource("10_xh4mi")]
+position = Vector2(29, -105)

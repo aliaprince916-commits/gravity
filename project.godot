@@ -21,7 +21,7 @@ buses/default_bus_layout=""
 [autoload]
 
 Gm="*res://scripts/GM.gd"
-Transitionlayer="*res://trnsitionlayer.tscn"
+Transition="*res://scenes/trnsitionlayer.tscn"
 
 [global_group]
 

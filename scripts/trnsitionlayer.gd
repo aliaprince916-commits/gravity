@@ -1,8 +1,11 @@
 extends CanvasLayer
 
-func change_scean(target, level_number):
-	# تحديث النص ليظهر رقم المرحلة
-	$Label.text = "Level " + str(level_number)
+func change_scean(target, level_number,text_):
+	# تحديث النص ليظهر رقم 
+	if target in Gm.levels:
+		$Label.text = "Level " + str(level_number)
+	else:
+		$Label.text = text_
 	
 	# تحديث نظام الحفظ إذا كانت المرحلة جديدة
 	if level_number > Gm.un_locked:

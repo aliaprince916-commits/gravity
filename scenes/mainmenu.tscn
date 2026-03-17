@@ -1,27 +1,43 @@
-[gd_scene load_steps=11 format=3 uid="uid://g4dynn2d2hs0"]
+[gd_scene load_steps=9 format=3 uid="uid://g4dynn2d2hs0"]
 
 [ext_resource type="Script" uid="uid://cobnmq7pesg0c" path="res://scripts/mainmenu.gd" id="1_3vvtq"]
 [ext_resource type="Texture2D" uid="uid://bmxhik6q32gl2" path="res://assets/28d35296e123be186c90a9e428a3060b.jpg" id="2_s5g8n"]
-[ext_resource type="Texture2D" uid="uid://cjqtwm310pl03" path="res://assets/wdf (1).png" id="3_7yvfd"]
+[ext_resource type="FontFile" uid="uid://8muqk22fpwd5" path="res://assets/Icons_Essential/AmaticSC-Bold.ttf" id="4_3vvtq"]
 [ext_resource type="FontFile" uid="uid://copffo3ccnjyl" path="res://assets/Icons_Essential/AmaticSC-Regular.ttf" id="4_dfy5j"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_igs2m"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5g8n"]
+bg_color = Color(0.27450982, 0.27450982, 0.27058825, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7uvds"]
-atlas = ExtResource("3_7yvfd")
-region = Rect2(16.356285, 9.855831, 128.92563, 37.832874)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yvfd"]
+bg_color = Color(0.18039216, 0.18039216, 0.18039216, 0.68235296)
+border_color = Color(0.8, 0.8, 0.8, 0.3372549)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3pujl"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfy5j"]
+bg_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
+border_color = Color(0.8, 0.8, 0.8, 0.3372549)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_at6rn"]
-atlas = ExtResource("3_7yvfd")
-region = Rect2(17.082932, 57.746674, 126.721756, 34.894394)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7uvds"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dihg0"]
-atlas = ExtResource("3_7yvfd")
-region = Rect2(17.029388, 105.356285, 127.8237, 34.8944)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_85riq"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_3vvtq")
@@ -29,72 +45,17 @@ metadata/_edit_horizontal_guides_ = [-20.0]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(1152, 648)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_right = 1152.0
 offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_s5g8n")
 expand_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = 120.0
-offset_right = -1.0
-offset_bottom = 120.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = -22
-
-[node name="Control" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(250, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/focus = SubResource("StyleBoxEmpty_igs2m")
-icon = SubResource("AtlasTexture_7uvds")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(250, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/focus = SubResource("StyleBoxEmpty_3pujl")
-icon = SubResource("AtlasTexture_at6rn")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="Button3" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(250, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/focus = SubResource("StyleBoxEmpty_7uvds")
-icon = SubResource("AtlasTexture_dihg0")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer"]
-
-[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="CanvasLayer"]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 55.0
@@ -107,5 +68,92 @@ text = "gravity fills"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[node name="continue" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -69.0
+offset_right = 137.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_3vvtq")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_s5g8n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7yvfd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dfy5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_85riq")
+text = "continue"
+
+[node name="play" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = 14.0
+offset_right = 112.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_3vvtq")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_s5g8n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7yvfd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dfy5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_85riq")
+text = "play"
+
+[node name="setting" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = 98.0
+offset_right = 182.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_3vvtq")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_s5g8n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7yvfd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dfy5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_85riq")
+text = "setting
+"
+
+[node name="quit" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = 181.0
+offset_right = 122.0
+offset_bottom = 255.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_3vvtq")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_s5g8n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7yvfd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dfy5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_85riq")
+text = "quit
+"
+
+[connection signal="pressed" from="CanvasLayer/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/quit" to="." method="_on_quit_pressed"]

@@ -9,6 +9,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name == "player" or body.is_in_group("player"):
 		if target_level != "":
 			# استدعاء دالة الانتقال
-			Transitionlayer.change_scean("res://scenes/main_lvl.tscn",1)
+			Transitionlayer.change_scean(target_level, level_number)
 		else:
 			print("Error: No target level selected!")

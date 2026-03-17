@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cxmxioukklktq"]
 
 [ext_resource type="Script" uid="uid://bngtm884xq0y0" path="res://scripts/trnsitionlayer.gd" id="1_bqirp"]
-[ext_resource type="FontFile" uid="uid://ct80htj8oqan5" path="res://assets/Icons_Essential/BitcountGridSingleInk-VariableFont_CRSV,ELSH,ELXP,SZP1,SZP2,XPN1,XPN2,YPN1,YPN2,slnt,wght.ttf" id="2_of3fc"]
+[ext_resource type="FontFile" uid="uid://8muqk22fpwd5" path="res://assets/Icons_Essential/AmaticSC-Bold.ttf" id="2_av5vk"]
 
 [sub_resource type="Animation" id="Animation_o5wev"]
 resource_name = "Fade"
@@ -24,10 +24,10 @@ tracks/1/path = NodePath("Label:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.033333335, 1),
+"times": PackedFloat32Array(0.05, 0.6333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_of3fc"]
@@ -81,11 +81,18 @@ libraries = {
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = 369.0
-offset_top = 266.0
-offset_right = 637.0
-offset_bottom = 354.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = -82.5
+offset_right = 161.0
+offset_bottom = 82.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.16206557, 0.1620656, 0.16206557, 1)
-theme_override_fonts/font = ExtResource("2_of3fc")
-theme_override_font_sizes/font_size = 100
-text = "level1"
+theme_override_fonts/font = ExtResource("2_av5vk")
+theme_override_font_sizes/font_size = 130
+text = "  level1  "

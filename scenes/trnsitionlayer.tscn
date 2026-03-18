@@ -12,7 +12,7 @@ tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.47, 1),
+"times": PackedFloat32Array(0, 0.56666666, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0.36470592, 0.36470592, 0.36470592, 0), Color(0.22670749, 0.22670749, 0.22670746, 1), Color(0, 0, 0, 1)]
@@ -64,6 +64,7 @@ _data = {
 }
 
 [node name="Trnsitionlayer" type="CanvasLayer"]
+layer = 100
 script = ExtResource("1_bqirp")
 
 [node name="ColorRect" type="ColorRect" parent="."]

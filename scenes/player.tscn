@@ -1,9 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://cfmjgl8haoem3"]
+[gd_scene load_steps=29 format=3 uid="uid://cfmjgl8haoem3"]
 
 [ext_resource type="Script" uid="uid://cswrw8mua76u" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://db55hkfgodnf6" path="res://assets/AnimationSheet_Character (1).png" id="2_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://dc700t6ast1b3" path="res://gravity_shadow.tscn" id="2_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://idv7utdvlktw" path="res://assets/jump.mp3" id="3_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://cohj74d588mdr" path="res://assets/g.mp3" id="4_dqkch"]
+[ext_resource type="FontFile" uid="uid://copffo3ccnjyl" path="res://assets/Icons_Essential/AmaticSC-Regular.ttf" id="6_fjrip"]
+[ext_resource type="FontFile" uid="uid://8muqk22fpwd5" path="res://assets/Icons_Essential/AmaticSC-Bold.ttf" id="6_tuyoq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("2_qhqgy")
@@ -73,7 +76,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tuyoq")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 3.0
 }, {
@@ -130,25 +133,146 @@ animations = [{
 radius = 5.0
 height = 24.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjrip"]
+bg_color = Color(0.27450982, 0.27450982, 0.27058825, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smehm"]
+bg_color = Color(0.18039216, 0.18039216, 0.18039216, 0.68235296)
+border_color = Color(0.8, 0.8, 0.8, 0.3372549)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur7pv"]
+bg_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
+border_color = Color(0.8, 0.8, 0.8, 0.3372549)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y4r1p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+size = Vector2(14, 24)
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
+shadow_scene = ExtResource("2_qlg0r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.90625, 0.90625)
 sprite_frames = SubResource("SpriteFrames_fulsm")
-animation = &"idle"
+animation = &"die"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 2)
 shape = SubResource("CapsuleShape2D_4r5pv")
 
-[node name="Timer" type="Timer" parent="."]
-
 [node name="jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_qhqgy")
-bus = &"sfx"
 
 [node name="g" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_dqkch")
-bus = &"sfx"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="DeathMessage" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -321.0
+offset_top = -244.0
+offset_right = 321.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_fjrip")
+theme_override_font_sizes/font_size = 150
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -573.0
+offset_top = -321.0
+offset_right = 573.0
+offset_bottom = 321.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6156863)
+
+[node name="home" type="Button" parent="CanvasLayer"]
+offset_left = 262.0
+offset_top = 450.0
+offset_right = 420.0
+offset_bottom = 524.0
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("6_tuyoq")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_fjrip")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_smehm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ur7pv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4r1p")
+text = "home
+"
+
+[node name="retry" type="Button" parent="CanvasLayer"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -432.0
+offset_top = 131.0
+offset_right = -274.0
+offset_bottom = 205.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("6_tuyoq")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_fjrip")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_smehm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ur7pv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4r1p")
+text = "Retry
+"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 436.0
+offset_top = 316.0
+offset_right = 646.0
+offset_bottom = 385.0
+theme_override_font_sizes/font_size = 50
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_dqkch")
+
+[connection signal="pressed" from="CanvasLayer/home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="CanvasLayer/retry" to="." method="_on_home_pressed"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

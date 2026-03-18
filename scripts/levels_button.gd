@@ -12,10 +12,6 @@ func _on_level_2_pressed() -> void:
 func _on_level_1_pressed() -> void:
 	_on_pressed("res://scenes/lvl_prototype.tscn",1)
 
-
-
-
-
 func _on_home_pressed() -> void:
 	click.play()
 	Transition.change_scean("res://scenes/mainmenu.tscn",0,"home")

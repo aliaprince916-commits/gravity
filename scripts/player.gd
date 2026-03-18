@@ -3,7 +3,9 @@ extends CharacterBody2D
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -280.0
-
+@export var shadow_scene :PackedScene
+@onready var death_ui = $CanvasLayer
+@onready var message_label = $CanvasLayer/DeathMessage
 @onready var g: AudioStreamPlayer2D = $g
 @onready var jump: AudioStreamPlayer2D = $jump
 @onready var timer: Timer = $Timer
@@ -67,7 +69,90 @@ func is_grav(g):
 		return true
 	else:
 		return false
+
+	# استدعاء الـ Scene الخاص بالظل (تأكد من عمل Preload له)
+var is_dead: bool = false # تعريف المتغير في أعلى الملف
+
 func die():
-	set_physics_process(false)
-	animated_sprite_2d.play("die")
-	timer.start()
+	if is_dead: 
+		return # لمنع استدعاء الدالة أكثر من مرة
+	
+	is_dead = true
+	set_physics_process(false) # إيقاف حركة اللاعب
+	
+	# تشغيل أنميشن الموت
+	if animated_sprite_2d.sprite_frames.has_animation("die"):
+		animated_sprite_2d.play("die")
+	
+	# الانتظار حتى ينتهي الأنميشن تماماً (أهم خطوة في Godot 4)
+	await animated_sprite_2d.animation_finished
+	
+	# بعد انتهاء الأنميشن، انتظر فريم واحد إضافي للتأكد (اختياري)
+	await get_tree().process_frame
+	
+	# الآن أظهر الواجهة
+	show_death_screen()
+	
+	# 3. إظهار رسالة الموت العشوائية
+	
+	# 4. إنشاء الظل في مكان الموت
+	if shadow_scene:
+		var shadow = shadow_scene.instantiate()
+		shadow.global_position = global_position
+		GlobalGraveryerd.add_child(shadow)
+		print("yes")
+	
+	# 5. بدء التايمر لإعادة تشغيل المرحلة (تأكد من وجود Timer في المشهد)
+	
+# تأكد من سحب ملف الـ Scene الخاص بالظل هنا في المفتش (Inspector)
+
+
+func _on_player_death():
+	# 1. إظهار الرسالة العشوائية
+	
+	show_death_screen()
+	# 2. إنشاء الظل في موقع الموت الحالي
+	if shadow_scene:
+		var shadow_instance = shadow_scene.instantiate()
+		shadow_instance.global_position = global_position
+		# إضافة الظل للمشهد الأساسي وليس كابن للاعب (لأنه سيموت)
+		get_tree().current_scene.add_child(shadow_instance)
+
+# تأكد من تعريف الزر والرسالة في الأعلى
+
+
+func show_death_screen():
+	# 1. اختيار رسالة إنجليزية عشوائية
+	var messages = [
+		"FATAL ERROR: GRAVITY"  ,
+		"THE SHADOW CONSUMED YOU",
+		"WASTED IN THE VOID     ",
+		"GAME OVER,try again    "
+	]
+	message_label.text = messages.pick_random()
+	
+	# 2. إظهار الواجهة
+	death_ui.show()
+	
+	# 3. جعل الفأرة تظهر للضغط على الأزرار
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+# ربط زر الهوم (Home Button)
+func _on_home_button_pressed():
+	# استبدل المسار أدناه بمسار مشهد القائمة الرئيسية عندك
+	get_tree().change_scene_to_file("res://main_menu.tscn")
+
+# ربط زر الإعادة (Retry Button)
+
+
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.name=="monster":
+		die()
+	pass # Replace with function body.
+
+
+func _on_home_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/lvl_prototype.tscn")
+	pass # Replace with function body.

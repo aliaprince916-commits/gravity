@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc700t6ast1b3"]
+
+[ext_resource type="Script" uid="uid://i7ca3otst4wp" path="res://gravity_shadow.gd" id="1_p8rut"]
+[ext_resource type="Texture2D" uid="uid://db55hkfgodnf6" path="res://assets/AnimationSheet_Character (1).png" id="2_uh6w2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sqr20"]
+radius = 93.04838
+
+[node name="GravityShadow" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_p8rut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sqr20")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_uh6w2")
+region_enabled = true
+region_rect = Rect2(34.89223, 198.61205, 23.021923, 26.079529)

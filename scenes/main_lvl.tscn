@@ -113,6 +113,7 @@ script = ExtResource("1_tacm2")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(0.06053035, 0.06053035, 0.060530342, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -135,6 +136,7 @@ offset_bottom = 201.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_61i1e")
+editable = false
 
 [node name="lvl_select" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
@@ -342,4 +344,5 @@ text = "home
 stream = ExtResource("4_7g15e")
 
 [connection signal="pressed" from="CanvasLayer/lvl_select/one to five/level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/lvl_select/one to five/level2" to="." method="_on_level_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/home" to="." method="_on_home_pressed"]

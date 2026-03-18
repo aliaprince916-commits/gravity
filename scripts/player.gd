@@ -8,7 +8,7 @@ const JUMP_VELOCITY = -280.0
 @onready var message_label = $CanvasLayer/DeathMessage
 @onready var g: AudioStreamPlayer2D = $g
 @onready var jump: AudioStreamPlayer2D = $jump
-@onready var timer: Timer = $Timer
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 # هذ المتغير لازم يكون في كل حاجة حاب نبدل لها الجاذبية
 var dir_p=1

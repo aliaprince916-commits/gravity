@@ -5,7 +5,10 @@ extends Node2D
 
 func _on_continue_pressed() -> void:
 	click.play()
-	Transition.change_scean("res://scenes/lvl_prototype.tscn",1,"")
+	# التأكد من أن الرقم لا يتخطى عدد المراحل المتاحة
+	var index = clamp(Gm.un_locked, 0, Gm.levels.size() - 1)
+	var target_path = Gm.levels[index]
+	Transition.change_scean(target_path, index + 1, "")
 func _on_play_pressed() -> void:
 	click.play()
 	Transition.change_scean("res://scenes/main_lvl.tscn",0,"levels")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dc700t6ast1b3"]
 
-[ext_resource type="Script" uid="uid://i7ca3otst4wp" path="res://gravity_shadow.gd" id="1_p8rut"]
+[ext_resource type="Script" uid="uid://i7ca3otst4wp" path="res://scripts/gravity_shadow.gd" id="1_p8rut"]
 [ext_resource type="Texture2D" uid="uid://db55hkfgodnf6" path="res://assets/AnimationSheet_Character (1).png" id="2_uh6w2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sqr20"]

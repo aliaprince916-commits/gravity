@@ -22,7 +22,7 @@ buses/default_bus_layout=""
 
 Gm="*res://scripts/GM.gd"
 Transition="*res://scenes/trnsitionlayer.tscn"
-GlobalGraveryerd="*res://global_graveryerd.tscn"
+GlobalGraveryerd="*res://scenes/global_graveryerd.tscn"
 
 [global_group]
 

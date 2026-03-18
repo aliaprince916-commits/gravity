@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+@export var ghost_enabeld:bool=true
 const SPEED = 200.0
 const JUMP_VELOCITY = -280.0
 @export var shadow_scene :PackedScene
@@ -96,7 +96,7 @@ func die():
 	# 3. إظهار رسالة الموت العشوائية
 	
 	# 4. إنشاء الظل في مكان الموت
-	if shadow_scene:
+	if ghost_enabeld and shadow_scene:
 		var shadow = shadow_scene.instantiate()
 		shadow.global_position = global_position
 		GlobalGraveryerd.add_child(shadow)

@@ -156,7 +156,6 @@ text = "quit
 "
 
 [node name="click" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(57, 22)
 stream = ExtResource("5_s5g8n")
 
 [connection signal="pressed" from="CanvasLayer/continue" to="." method="_on_continue_pressed"]

@@ -1,16 +1,14 @@
 extends CanvasLayer
-
+@onready var click: AudioStreamPlayer2D = $click
 func change_scean(target, level_number,text_):
+	click.play()
 	# تحديث النص ليظهر رقم 
 	if target in Gm.levels:
 		$Label.text = "Level " + str(level_number)
 	else:
 		$Label.text = text_
-	# تحديث نظام الحفظ إذا كانت المرحلة جديدة
-	if level_number > Gm.un_locked:
-		Gm.un_locked = level_number
-		Gm.save_game() # حفظ التلقائي
-	# بدء الأنميشن
+	
+		# بدء الأنميشن
 	$AnimationPlayer.play("Fade")
 # انتظار انتهاء الأنميشن قبل تغيير المشهد
 	await $AnimationPlayer.animation_finished# تغيير المرحلة

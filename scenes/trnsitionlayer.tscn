@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxmxioukklktq"]
+[gd_scene load_steps=7 format=3 uid="uid://cxmxioukklktq"]
 
 [ext_resource type="Script" uid="uid://bngtm884xq0y0" path="res://scripts/trnsitionlayer.gd" id="1_bqirp"]
 [ext_resource type="FontFile" uid="uid://8muqk22fpwd5" path="res://assets/Icons_Essential/AmaticSC-Bold.ttf" id="2_av5vk"]
+[ext_resource type="AudioStream" uid="uid://c1acj8f0m0hvp" path="res://assets/universfield-computer-mouse-click-02-383961 (1).mp3" id="3_yh5ee"]
 
 [sub_resource type="Animation" id="Animation_o5wev"]
 resource_name = "Fade"
@@ -97,3 +98,6 @@ theme_override_colors/font_color = Color(0.16206557, 0.1620656, 0.16206557, 1)
 theme_override_fonts/font = ExtResource("2_av5vk")
 theme_override_font_sizes/font_size = 130
 text = "  level1  "
+
+[node name="click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yh5ee")

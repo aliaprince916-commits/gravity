@@ -160,7 +160,6 @@ sources/0 = SubResource("TileSetAtlasSource_kbqdv")
 [node name="player" parent="." instance=ExtResource("1_hpibf")]
 z_index = 1
 position = Vector2(90, -83)
-ghost_enabeld = false
 
 [node name="gr_ch" parent="." instance=ExtResource("4_6v2h5")]
 z_index = 1

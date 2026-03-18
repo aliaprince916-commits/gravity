@@ -140,7 +140,7 @@ func show_death_screen():
 # ربط زر الهوم (Home Button)
 func _on_home_button_pressed():
 	# استبدل المسار أدناه بمسار مشهد القائمة الرئيسية عندك
-	get_tree().change_scene_to_file("res://main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
 
 # ربط زر الإعادة (Retry Button)
 
@@ -151,8 +151,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name=="monster":
 		die()
 	pass # Replace with function body.
-
-
-func _on_home_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
+func _on_retry_pressed() -> void:
+	get_tree().reload_current_scene()
 	pass # Replace with function body.

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://g4dynn2d2hs0"]
+[gd_scene load_steps=10 format=3 uid="uid://g4dynn2d2hs0"]
 
 [ext_resource type="Script" uid="uid://cobnmq7pesg0c" path="res://scripts/mainmenu.gd" id="1_3vvtq"]
 [ext_resource type="Texture2D" uid="uid://bmxhik6q32gl2" path="res://assets/28d35296e123be186c90a9e428a3060b.jpg" id="2_s5g8n"]
 [ext_resource type="FontFile" uid="uid://8muqk22fpwd5" path="res://assets/Icons_Essential/AmaticSC-Bold.ttf" id="4_3vvtq"]
 [ext_resource type="FontFile" uid="uid://copffo3ccnjyl" path="res://assets/Icons_Essential/AmaticSC-Regular.ttf" id="4_dfy5j"]
+[ext_resource type="AudioStream" uid="uid://c1acj8f0m0hvp" path="res://assets/universfield-computer-mouse-click-02-383961 (1).mp3" id="5_s5g8n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5g8n"]
 bg_color = Color(0.27450982, 0.27450982, 0.27058825, 1)
@@ -153,6 +154,10 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_dfy5j")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_85riq")
 text = "quit
 "
+
+[node name="click" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(57, 22)
+stream = ExtResource("5_s5g8n")
 
 [connection signal="pressed" from="CanvasLayer/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="CanvasLayer/play" to="." method="_on_play_pressed"]

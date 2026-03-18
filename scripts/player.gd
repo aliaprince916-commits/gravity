@@ -127,7 +127,8 @@ func show_death_screen():
 		"FATAL ERROR: GRAVITY"  ,
 		"THE SHADOW CONSUMED YOU",
 		"WASTED IN THE VOID     ",
-		"GAME OVER,try again    "
+		"GAME OVER,try again    ",
+		"no checkpoint"
 	]
 	message_label.text = messages.pick_random()
 	
@@ -137,15 +138,6 @@ func show_death_screen():
 	# 3. جعل الفأرة تظهر للضغط على الأزرار
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-# ربط زر الهوم (Home Button)
-func _on_home_button_pressed():
-	# استبدل المسار أدناه بمسار مشهد القائمة الرئيسية عندك
-	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
-
-# ربط زر الإعادة (Retry Button)
-
-
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name=="monster":
@@ -154,3 +146,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_retry_pressed() -> void:
 	get_tree().reload_current_scene()
 	pass # Replace with function body.
+
+
+func _on_home_pressed() -> void:
+	# استبدل المسار أدناه بمسار مشهد القائمة الرئيسية عندك
+	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
+
+# ربط زر الإعادة (Retry Button)

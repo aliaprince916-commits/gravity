@@ -154,5 +154,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 
 func _on_home_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/lvl_prototype.tscn")
+	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
 	pass # Replace with function body.

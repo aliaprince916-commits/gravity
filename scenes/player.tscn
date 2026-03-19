@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cfmjgl8haoem3"]
+[gd_scene load_steps=37 format=3 uid="uid://cfmjgl8haoem3"]
 
 [ext_resource type="Script" uid="uid://cswrw8mua76u" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://db55hkfgodnf6" path="res://assets/AnimationSheet_Character (1).png" id="2_qhqgy"]
@@ -170,6 +170,74 @@ shadow_offset = Vector2(0, 3)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
 size = Vector2(14, 24)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y4r1p"]
+bg_color = Color(0.27450982, 0.27450982, 0.27058825, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2wvv"]
+bg_color = Color(0.18039216, 0.18039216, 0.18039216, 0.68235296)
+border_color = Color(0.8, 0.8, 0.8, 0.3372549)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3v2ag"]
+bg_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
+border_color = Color(0.8, 0.8, 0.8, 0.3372549)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jej6c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1ej7"]
+bg_color = Color(0.27450982, 0.27450982, 0.27058825, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oprun"]
+bg_color = Color(0.18039216, 0.18039216, 0.18039216, 0.68235296)
+border_color = Color(0.8, 0.8, 0.8, 0.3372549)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ls1"]
+bg_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
+border_color = Color(0.8, 0.8, 0.8, 0.3372549)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qfm1y"]
+
 [node name="player" type="CharacterBody2D" groups=["die"]]
 script = ExtResource("1_g2els")
 shadow_scene = ExtResource("2_qlg0r")
@@ -273,6 +341,88 @@ theme_override_font_sizes/font_size = 50
 position = Vector2(-1, 2)
 shape = SubResource("RectangleShape2D_dqkch")
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" type="CanvasLayer" parent="CanvasLayer2"]
+process_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2/PauseMenu"]
+offset_left = -32.0
+offset_top = -35.0
+offset_right = 1180.0
+offset_bottom = 673.0
+color = Color(0, 0, 0, 0.6156863)
+
+[node name="Control" type="VBoxContainer" parent="CanvasLayer2/PauseMenu"]
+offset_left = 319.0
+offset_top = 367.0
+offset_right = 803.0
+offset_bottom = 597.0
+
+[node name="resume" type="Button" parent="CanvasLayer2/PauseMenu/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("6_tuyoq")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_y4r1p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d2wvv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3v2ag")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jej6c")
+text = "resume"
+
+[node name="levels" type="Button" parent="CanvasLayer2/PauseMenu/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("6_tuyoq")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_y4r1p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d2wvv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3v2ag")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jej6c")
+text = "levels
+"
+
+[node name="Quit" type="Button" parent="CanvasLayer2/PauseMenu/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("6_tuyoq")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_y4r1p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d2wvv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3v2ag")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jej6c")
+text = "quit
+"
+
+[node name="Label" type="Label" parent="CanvasLayer2/PauseMenu"]
+offset_left = 312.0
+offset_top = 34.0
+offset_right = 831.0
+offset_bottom = 224.0
+theme_override_colors/font_color = Color(0.27752772, 0.27752772, 0.27752772, 1)
+theme_override_fonts/font = ExtResource("6_fjrip")
+theme_override_font_sizes/font_size = 150
+text = "pause_menu"
+
+[node name="PauseButton" type="Button" parent="CanvasLayer2"]
+process_mode = 3
+offset_left = 33.0
+offset_top = 23.0
+offset_right = 169.0
+offset_bottom = 97.0
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("6_tuyoq")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_f1ej7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oprun")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8ls1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qfm1y")
+text = "PAUSE"
+
 [connection signal="pressed" from="CanvasLayer/home" to="." method="_on_home_pressed"]
 [connection signal="pressed" from="CanvasLayer/retry" to="." method="_on_retry_pressed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="CanvasLayer2/PauseMenu/Control/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer2/PauseMenu/Control/levels" to="." method="_on_levels_pressed"]
+[connection signal="pressed" from="CanvasLayer2/PauseMenu/Control/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer2/PauseButton" to="." method="_on_pause_button_pressed"]

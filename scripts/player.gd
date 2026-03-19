@@ -1,5 +1,9 @@
 extends CharacterBody2D
+# --- الكود الذي يجب إضافته ---
 
+# تأكد من أن المسار يبدأ من مكان وجود السكريبت (Player) وصولاً للعقدة
+@onready var pause_button= $CanvasLayer2/PauseButton # غير CanvasLayer لاسم العقدة الأم للأزرار عندك
+@onready var pause_menu = $CanvasLayer2/PauseMenu
 @export var ghost_enabeld:bool=true
 const SPEED = 200.0
 const JUMP_VELOCITY = -280.0
@@ -90,26 +94,16 @@ func die():
 	# بعد انتهاء الأنميشن، انتظر فريم واحد إضافي للتأكد (اختياري)
 	await get_tree().process_frame
 	
-	# الآن أظهر الواجهة
 	show_death_screen()
-	
 	# 3. إظهار رسالة الموت العشوائية
-	
 	# 4. إنشاء الظل في مكان الموت
 	if ghost_enabeld and shadow_scene:
 		var shadow = shadow_scene.instantiate()
 		shadow.global_position = global_position
 		GlobalGraveryerd.add_child(shadow)
 		print("yes")
-	
-	# 5. بدء التايمر لإعادة تشغيل المرحلة (تأكد من وجود Timer في المشهد)
-	
-# تأكد من سحب ملف الـ Scene الخاص بالظل هنا في المفتش (Inspector)
-
-
 func _on_player_death():
 	# 1. إظهار الرسالة العشوائية
-	
 	show_death_screen()
 	# 2. إنشاء الظل في موقع الموت الحالي
 	if shadow_scene:
@@ -117,10 +111,6 @@ func _on_player_death():
 		shadow_instance.global_position = global_position
 		# إضافة الظل للمشهد الأساسي وليس كابن للاعب (لأنه سيموت)
 		get_tree().current_scene.add_child(shadow_instance)
-
-# تأكد من تعريف الزر والرسالة في الأعلى
-
-
 func show_death_screen():
 	# 1. اختيار رسالة إنجليزية عشوائية
 	var messages = [
@@ -132,24 +122,39 @@ func show_death_screen():
 	]
 	message_label.text = messages.pick_random()
 	
-	# 2. إظهار الواجهة
 	death_ui.show()
-	
-	# 3. جعل الفأرة تظهر للضغط على الأزرار
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
-
-#func _on_area_2d_body_entered(body: Node2D) -> void:
-	#if body.is_in_group("die"):
-		#die()
-	#pass # Replace with function body.
 func _on_retry_pressed() -> void:
 	get_tree().reload_current_scene()
-	pass # Replace with function body.
-
-
 func _on_home_pressed() -> void:
 	# استبدل المسار أدناه بمسار مشهد القائمة الرئيسية عندك
 	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
 
-# ربط زر الإعادة (Retry Button)
+
+# 1. وظيفة زر البوز الرئيسي (PauseButton)
+func _ready():
+	# نخفي القائمة فقط عند بدء اللعبة
+	$CanvasLayer2/PauseMenu.hide() 
+	# الزر سيبقى ظاهراً لأنه ليس ابناً لـ PauseMenu
+	$CanvasLayer2/PauseButton.show() 
+
+func _on_pause_button_pressed():
+	get_tree().paused = true
+	$CanvasLayer2/PauseMenu.show()   # تظهر القائمة الآن فوق كل شيء
+	$CanvasLayer2/PauseButton.hide() # اختياري: إذا أردت إخفاء الزر الصغير لكي لا يظهر خلف القائمة
+	# إخفاء الزر
+
+# 2. وظيفة زر العودة (resume) - الموجود داخل Control
+func _on_resume_pressed():
+	get_tree().paused = false  # تشغيل اللعبة
+	pause_menu.hide()          # إخفاء القائمة
+	pause_button.show()     # إظهار زر البوز
+
+# 3. وظيفة زر الخروج (Quit)
+func _on_quit_pressed():
+	get_tree().quit()          # إغلاق اللعبة
+
+
+func _on_levels_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_lvl.tscn")
+	pass # Replace with function body.

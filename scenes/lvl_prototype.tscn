@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://da4i8liabeqt2"]
+[gd_scene load_steps=15 format=4 uid="uid://da4i8liabeqt2"]
 
 [ext_resource type="PackedScene" uid="uid://cfmjgl8haoem3" path="res://scenes/player.tscn" id="1_hpibf"]
 [ext_resource type="Texture2D" uid="uid://cugvtqiookld" path="res://assets/Textures&trees.png" id="2_6v2h5"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b5rdv8xu15dff" path="res://scenes/monster.tscn" id="9_j0drg"]
 [ext_resource type="PackedScene" uid="uid://bp28bnr788mv5" path="res://scenes/finich.tscn" id="10_xh4mi"]
 [ext_resource type="PackedScene" uid="uid://gbfbhktwakum" path="res://scenes/lvl.tscn" id="11_r76lk"]
+[ext_resource type="PackedScene" uid="uid://cvcu8vln05hgw" path="res://particulse.tscn" id="12_cssb6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kbqdv"]
 texture = ExtResource("2_6v2h5")
@@ -213,3 +214,6 @@ offset_bottom = 2.0
 position = Vector2(348, -194)
 rotation = -3.1513636
 target = ExtResource("11_r76lk")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("12_cssb6")]
+position = Vector2(380, -69)

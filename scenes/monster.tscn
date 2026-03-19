@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b5rdv8xu15dff"]
+[gd_scene load_steps=23 format=3 uid="uid://b5rdv8xu15dff"]
 
 [ext_resource type="Script" uid="uid://dokihhv4qj4ey" path="res://scripts/monster.gd" id="1_yce20"]
 [ext_resource type="Texture2D" uid="uid://doq876ed58pr5" path="res://assets/Skeletons/Animations/Die/Png_Files/Skeleton_die1.png" id="2_yce20"]
@@ -95,6 +95,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_v8ewj"]
+offsets = PackedFloat32Array(0, 0.65068495)
+colors = PackedColorArray(0, 0, 0, 1, 0.2231029, 0.2231029, 0.22310287, 1)
+
+[sub_resource type="Gradient" id="Gradient_yce20"]
+offsets = PackedFloat32Array(0.89041096, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fttm7"]
+size = Vector2(14, 21)
+
 [node name="monster" type="CharacterBody2D" groups=["gravity"]]
 script = ExtResource("1_yce20")
 
@@ -112,3 +122,33 @@ autoplay = "walk"
 
 [node name="director" type="RayCast2D" parent="."]
 target_position = Vector2(11, 13)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 14
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 20)
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+angle_min = 2.0
+angle_max = 2.0
+scale_amount_max = 3.0
+color = Color(0.19434929, 0.19434926, 0.19434926, 1)
+color_ramp = SubResource("Gradient_v8ewj")
+color_initial_ramp = SubResource("Gradient_yce20")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_fttm7")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

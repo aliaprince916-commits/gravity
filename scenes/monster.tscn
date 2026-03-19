@@ -105,7 +105,7 @@ offsets = PackedFloat32Array(0.89041096, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fttm7"]
 size = Vector2(14, 21)
 
-[node name="monster" type="CharacterBody2D" groups=["gravity"]]
+[node name="monster" type="CharacterBody2D" groups=["die", "gravity"]]
 script = ExtResource("1_yce20")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -151,4 +151,4 @@ position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_fttm7")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

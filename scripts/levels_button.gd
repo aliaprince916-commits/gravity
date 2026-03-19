@@ -13,3 +13,7 @@ func _on_level_2_pressed() -> void:
 
 func _on_home_pressed() -> void:
 	Transition.change_scean("res://scenes/mainmenu.tscn",0,"home")
+
+
+func _on_level_3_pressed() -> void:
+	_on_pressed("res://scenes/lvl2.tscn",3)

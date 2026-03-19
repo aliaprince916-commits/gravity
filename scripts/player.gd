@@ -139,10 +139,10 @@ func show_death_screen():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name=="monster":
-		die()
-	pass # Replace with function body.
+#func _on_area_2d_body_entered(body: Node2D) -> void:
+	#if body.is_in_group("die"):
+		#die()
+	#pass # Replace with function body.
 func _on_retry_pressed() -> void:
 	get_tree().reload_current_scene()
 	pass # Replace with function body.

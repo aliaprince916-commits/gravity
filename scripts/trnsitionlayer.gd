@@ -7,12 +7,11 @@ func change_scean(target, level_number,text_):
 		$Label.text = "Level " + str(level_number)
 	else:
 		$Label.text = text_
-	
-		# بدء الأنميشن
+					# بدء الأنميشن
 	$AnimationPlayer.play("Fade")
-# انتظار انتهاء الأنميشن قبل تغيير المشهد
-	await $AnimationPlayer.animation_finished# تغيير المرحلة
+	# انتظار انتهاء الأنميشن قبل تغيير المشهد
+	await $AnimationPlayer.animation_finished# تغيير 
 	get_tree().change_scene_to_file(target)
 	await  get_tree().process_frame
-	# إنهاء الأنميشن (ظهور المرحلة الجديدة)
+	# إنهاء الأنميشن (ظهور المرحلة الج
 	$AnimationPlayer.play_backwards("Fade")

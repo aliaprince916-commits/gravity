@@ -9,3 +9,5 @@ func change_(target:PackedScene):
 	get_tree().change_scene_to_packed(target)
 	await  get_tree().process_frame
 	$AnimationPlayer.play_backwards("Fade")
+	Gm.un_locked+=1
+	Gm.save_game()

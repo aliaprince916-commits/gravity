@@ -28,6 +28,7 @@ GlobalGraveryerd="*res://scenes/global_graveryerd.tscn"
 [global_group]
 
 gravity=""
+die=""
 
 [input]
 

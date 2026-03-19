@@ -52,18 +52,17 @@ func is_grav(g):
 		return true
 	else:
 		return false
-func _die():
+func die():
 	set_physics_process(false) 
 	animated_sprite_2d.visible = false  
 	$CPUParticles2D.emitting = true
 	$Timer.start()
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name=="particulse":
-		_die()
-		print("hello")
-	pass # Replace with function body.
-
-
 func _on_timer_timeout() -> void:
 	queue_free()
 	pass # Replace with function body.
+
+
+#func _on_area_2d_area_entered(area: Area2D) -> void:
+	#if area.is_in_group("particals"):
+		#die()
+		#print("hello")

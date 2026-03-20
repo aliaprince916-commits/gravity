@@ -28,12 +28,30 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	move(direction,is_floor)
 	# دفع الصندوق 
+	# دفع الصندوق 
 	for i in get_slide_collision_count():
 		var collision=get_slide_collision(i)
 		var collision_box=collision.get_collider()
 		if collision_box.is_in_group("box") and abs(collision_box.get_linear_velocity().x)<MAX_VELOCITY:
 			collision_box.apply_central_impulse(collision.get_normal()*-PUSH)
+
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
 	# عملية تغير الجاذبية لنفسه 
 	if Input.is_action_just_pressed("g") and is_floor:
 		dir_p*=-1

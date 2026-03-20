@@ -10,4 +10,3 @@ func change_(target:PackedScene):
 	await  get_tree().process_frame
 	$AnimationPlayer.play_backwards("Fade")
 	Gm.un_locked+=1
-	Gm.save_game()

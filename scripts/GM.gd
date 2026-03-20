@@ -4,6 +4,7 @@ var levels = ["res://scenes/lvl_prototype.tscn", "res://scenes/lvl.tscn","res://
 var un_locked = 0
 
 func _ready():
+	save_game()
 	load_game()
 
 func save_game():

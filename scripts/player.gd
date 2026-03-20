@@ -12,7 +12,8 @@ const JUMP_VELOCITY = -280.0
 @onready var message_label = $CanvasLayer/DeathMessage
 @onready var g: AudioStreamPlayer2D = $g
 @onready var jump: AudioStreamPlayer2D = $jump
-
+@onready var click: AudioStreamPlayer2D = $click
+@onready var die_: AudioStreamPlayer2D = $die_
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 # هذ المتغير لازم يكون في كل حاجة حاب نبدل لها الجاذبية
 var dir_p=1
@@ -30,6 +31,19 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("g") and is_floor:
 		dir_p*=-1
 		g.play()
+	# كود دفع الصناديق (يوضع في سكريبت اللاعب)
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider is CharacterBody2D and collider.name.contains("box"):
+			collider.velocity.x = velocity.x + (sign(velocity.x) * 50)
+	
+	
+	
+	
+	
+	
+	
 	
 # دالة القفز والجمب
 func gravity_jump(delta,is_floor):
@@ -87,9 +101,11 @@ func die():
 	# تشغيل أنميشن الموت
 	if animated_sprite_2d.sprite_frames.has_animation("die"):
 		animated_sprite_2d.play("die")
+		die_.play()
+		
 	
 	# الانتظار حتى ينتهي الأنميشن تماماً (أهم خطوة في Godot 4)
-	await animated_sprite_2d.animation_finished
+	await animated_sprite_2d.animation_finished 
 	
 	# بعد انتهاء الأنميشن، انتظر فريم واحد إضافي للتأكد (اختياري)
 	await get_tree().process_frame
@@ -123,6 +139,7 @@ func show_death_screen():
 	message_label.text = messages.pick_random()
 	
 	death_ui.show()
+	$CanvasLayer2/PauseButton.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 func _on_retry_pressed() -> void:
 	get_tree().reload_current_scene()
@@ -146,15 +163,24 @@ func _on_pause_button_pressed():
 
 # 2. وظيفة زر العودة (resume) - الموجود داخل Control
 func _on_resume_pressed():
+	click.play()
 	get_tree().paused = false  # تشغيل اللعبة
 	pause_menu.hide()          # إخفاء القائمة
 	pause_button.show()     # إظهار زر البوز
 
 # 3. وظيفة زر الخروج (Quit)
 func _on_quit_pressed():
+	click.play()
 	get_tree().quit()          # إغلاق اللعبة
 
 
 func _on_levels_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_lvl.tscn")
+	click.play()
+	get_tree().paused = false 
+	Transition.change_scean("res://scenes/main_lvl.tscn",0,"")
 	pass # Replace with function body.
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("die" ) and body.name!="player":
+		die()

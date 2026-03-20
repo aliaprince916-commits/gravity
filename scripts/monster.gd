@@ -1,6 +1,6 @@
 extends CharacterBody2D
 @onready var timer: Timer = $Timer
-
+@onready var die_: AudioStreamPlayer2D = $die_
 @onready var director: RayCast2D = $director
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 # هذ المتغير لازم يكون في كل حاجة حاب نبدل لها الجاذبية
@@ -53,6 +53,7 @@ func is_grav(g):
 	else:
 		return false
 func die():
+	die_.play()
 	set_physics_process(false) 
 	animated_sprite_2d.visible = false  
 	$CPUParticles2D.emitting = true
@@ -60,9 +61,3 @@ func die():
 func _on_timer_timeout() -> void:
 	queue_free()
 	pass # Replace with function body.
-
-
-#func _on_area_2d_area_entered(area: Area2D) -> void:
-	#if area.is_in_group("particals"):
-		#die()
-		#print("hello")

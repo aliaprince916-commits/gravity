@@ -247,10 +247,8 @@ shadow_scene = ExtResource("2_qlg0r")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.90625, 0.90625)
 sprite_frames = SubResource("SpriteFrames_fulsm")
-animation = &"die"
+animation = &"idle"
 autoplay = "idle"
-frame = 2
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 2)

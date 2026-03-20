@@ -1,12 +1,13 @@
 extends CharacterBody2D
 # --- الكود الذي يجب إضافته ---
-
+const SPEED = 200.0
+const JUMP_VELOCITY = -280.0
+const PUSH=100
+const MAX_VELOCITY=150
 # تأكد من أن المسار يبدأ من مكان وجود السكريبت (Player) وصولاً للعقدة
 @onready var pause_button= $CanvasLayer2/PauseButton # غير CanvasLayer لاسم العقدة الأم للأزرار عندك
 @onready var pause_menu = $CanvasLayer2/PauseMenu
 @export var ghost_enabeld:bool=true
-const SPEED = 200.0
-const JUMP_VELOCITY = -280.0
 @export var shadow_scene :PackedScene
 @onready var death_ui = $CanvasLayer
 @onready var message_label = $CanvasLayer/DeathMessage
@@ -26,18 +27,18 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")
 	# Add the gravity.
 	move(direction,is_floor)
-	move_and_slide()
+	# دفع الصندوق 
+	for i in get_slide_collision_count():
+		var collision=get_slide_collision(i)
+		var collision_box=collision.get_collider()
+		if collision_box.is_in_group("box") and abs(collision_box.get_linear_velocity().x)<MAX_VELOCITY:
+			collision_box.apply_central_impulse(collision.get_normal()*-PUSH)
+	
 	# عملية تغير الجاذبية لنفسه 
 	if Input.is_action_just_pressed("g") and is_floor:
 		dir_p*=-1
 		g.play()
-	# كود دفع الصناديق (يوضع في سكريبت اللاعب)
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
-		if collider is CharacterBody2D and collider.name.contains("box"):
-			collider.velocity.x = velocity.x + (sign(velocity.x) * 50)
-	
+	move_and_slide()
 	
 	
 	
@@ -56,9 +57,10 @@ func gravity_jump(delta,is_floor):
 		animated_sprite_2d.play("jump")
 		if dir_p==1:
 			animated_sprite_2d.flip_v=false
+			$CollisionShape2D.position.y=2
 		else:
 			animated_sprite_2d.flip_v=true
-		
+			$CollisionShape2D.position.y=-2
 # دالة المشي وفق متغير الاتجاه
 func move(direction,is_floor):
 	# Get the input direction and handle the movement/deceleration.

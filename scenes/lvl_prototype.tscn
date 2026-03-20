@@ -218,7 +218,7 @@ rotation = -3.1513636
 target = ExtResource("11_r76lk")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("12_cssb6")]
-position = Vector2(49, -68)
+position = Vector2(232, -70)
 
 [node name="box" parent="." instance=ExtResource("13_trl1v")]
 position = Vector2(153, -91)

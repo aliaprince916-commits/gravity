@@ -20,94 +20,55 @@ const MAX_VELOCITY=150
 var dir_p=1
 
 func _physics_process(delta: float) -> void:
-	# معلومات مهمة حول متغير انجاه الجاذبية والبحث عن حوله في الارض او السقف مع الجاذبية صحيحة
-	var is_floor=is_grav(dir_p)
-	# هذ متغير اتجاه التحرك يمين اوي سار على حسب الزر الذي انت ظاغط عليه 
-	gravity_jump(delta,is_floor)
+	# 1. تحديث اتجاه الأعلى (Up Direction) بناءً على الجاذبية الحالية
+	# هذا السطر يغنيك عن دالة is_grav المعقدة ويحل مشاكل التصادم
+	up_direction = Vector2.UP if dir_p == 1 else Vector2.DOWN
+	
+	# 2. إضافة الجاذبية (تستخدم dir_p لتحديد الاتجاه)
+	if not is_on_floor():
+		velocity += get_gravity() * delta * dir_p
+
+	# 3. معالجة القفز (is_on_floor الآن تعمل في السقف والأرض بفضل up_direction)
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY * dir_p
+		jump.play()
+
+	# 4. معالجة الحركة الأفقية
 	var direction := Input.get_axis("ui_left", "ui_right")
-	# Add the gravity.
-	move(direction,is_floor)
-	# دفع الصندوق 
-	# دفع الصندوق 
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	# 5. استدعاء الحركة (يجب أن يكون قبل فحص تصادم الصناديق)
+	move_and_slide()
+
+	# 6. دفع الصندوق (RigidBody2D) - كود نظيف وبدون اهتزاز
 	for i in get_slide_collision_count():
 		var collision=get_slide_collision(i)
 		var collision_box=collision.get_collider()
 		if collision_box.is_in_group("box") and abs(collision_box.get_linear_velocity().x)<MAX_VELOCITY:
 			collision_box.apply_central_impulse(collision.get_normal()*-PUSH)
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
-
-
-
-
-	# عملية تغير الجاذبية لنفسه 
-	if Input.is_action_just_pressed("g") and is_floor:
-		dir_p*=-1
+	# 7. تغيير الجاذبية (الضغط على زر G)
+	if Input.is_action_just_pressed("g") and is_on_floor():
+		dir_p *= -1
 		g.play()
-	move_and_slide()
-	
-	
-	
-	
-	
-	
-	
-# دالة القفز والجمب
-func gravity_jump(delta,is_floor):
-	if !is_floor:
-		velocity +=get_gravity()*delta*dir_p
-	if Input.is_action_just_pressed("ui_accept") and is_floor:
-		velocity.y =JUMP_VELOCITY*dir_p
-		jump.play()
-	if not is_floor:
+		# اختيار بكسل آرت: قلب الأنميشن فوراً
+		animated_sprite_2d.flip_v = (dir_p == -1)
+
+	# 8. تحديث الأنيميشن
+	update_animations(direction)
+
+# دالة منفصلة للأنيميشن ليبقى الكود منظماً
+func update_animations(direction):
+	if not is_on_floor():
 		animated_sprite_2d.play("jump")
-		if dir_p==1:
-			animated_sprite_2d.flip_v=false
-			$CollisionShape2D.position.y=2
-		else:
-			animated_sprite_2d.flip_v=true
-			$CollisionShape2D.position.y=-2
-# دالة المشي وفق متغير الاتجاه
-func move(direction,is_floor):
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	if direction:
-		velocity.x = direction * SPEED
+	elif direction != 0:
+		animated_sprite_2d.play("run")
+		animated_sprite_2d.flip_h = (direction < 0)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	pass
-
-	if direction>0:
-		animated_sprite_2d.flip_h=false
-	if direction<0:
-		animated_sprite_2d.flip_h=true
-	if is_floor:
-		if direction==0:
-			animated_sprite_2d.play("idle")
-		else:
-			animated_sprite_2d.play("run")
-	
-# البحث عن هل هو في الجاذبية الصحيحة لتصحيح التجاه
-func is_grav(g):
-	if is_on_floor() and g==1:
-		return true
-	elif is_on_ceiling() and g==-1:
-		return true
-	else:
-		return false
-
+		animated_sprite_2d.play("idle")
 	# استدعاء الـ Scene الخاص بالظل (تأكد من عمل Preload له)
 var is_dead: bool = false # تعريف المتغير في أعلى الملف
 

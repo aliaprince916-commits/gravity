@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://cm7i4iewqbxl5"]
+[gd_scene load_steps=10 format=4 uid="uid://cm7i4iewqbxl5"]
 
 [ext_resource type="PackedScene" uid="uid://cfmjgl8haoem3" path="res://scenes/player.tscn" id="1_q8qpk"]
 [ext_resource type="Texture2D" uid="uid://cugvtqiookld" path="res://assets/Textures&trees.png" id="2_a8r6q"]
 [ext_resource type="PackedScene" uid="uid://cs3jt8mg6loe5" path="res://scenes/textures&trees.tscn" id="3_y1kb8"]
 [ext_resource type="PackedScene" uid="uid://b6y12y7blqri6" path="res://scenes/fog.tscn" id="4_3wjs2"]
 [ext_resource type="PackedScene" uid="uid://bp28bnr788mv5" path="res://scenes/finich.tscn" id="5_1kw1s"]
+[ext_resource type="PackedScene" uid="uid://cvcu8vln05hgw" path="res://scenes/particulse.tscn" id="6_a8r6q"]
 [ext_resource type="PackedScene" uid="uid://b5rdv8xu15dff" path="res://scenes/monster.tscn" id="6_lemrm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_icged"]
@@ -155,7 +156,7 @@ sources/0 = SubResource("TileSetAtlasSource_icged")
 
 [node name="player" parent="." instance=ExtResource("1_q8qpk")]
 z_index = 1
-position = Vector2(43, -90)
+position = Vector2(27, -78)
 ghost_enabeld = false
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -183,13 +184,54 @@ metadata/_edit_use_anchors_ = true
 [node name="Area2D" parent="." instance=ExtResource("5_1kw1s")]
 position = Vector2(348, -194)
 rotation = -3.1513636
-target = null
 
-[node name="monster" parent="." instance=ExtResource("6_lemrm")]
-position = Vector2(298, -93.00001)
-scale = Vector2(-3.025317, 2.497027)
+[node name="particals" type="Node2D" parent="."]
 
-[node name="monster2" parent="." instance=ExtResource("6_lemrm")]
-position = Vector2(59, -176.00002)
-scale = Vector2(-3.025317, 2.497027)
+[node name="CharacterBody2D" parent="particals" instance=ExtResource("6_a8r6q")]
+position = Vector2(239, -196)
+dir_g = -1
+
+[node name="CharacterBody2D2" parent="particals" instance=ExtResource("6_a8r6q")]
+position = Vector2(267, -196)
+dir_g = -1
+
+[node name="CharacterBody2D3" parent="particals" instance=ExtResource("6_a8r6q")]
+position = Vector2(295, -196)
+dir_g = -1
+
+[node name="CharacterBody2D4" parent="particals" instance=ExtResource("6_a8r6q")]
+position = Vector2(323, -196)
+dir_g = -1
+
+[node name="CharacterBody2D5" parent="particals" instance=ExtResource("6_a8r6q")]
+position = Vector2(151, -79)
+
+[node name="CharacterBody2D6" parent="particals" instance=ExtResource("6_a8r6q")]
+position = Vector2(123, -79)
+
+[node name="CharacterBody2D7" parent="particals" instance=ExtResource("6_a8r6q")]
+position = Vector2(95, -79)
+
+[node name="CharacterBody2D8" parent="particals" instance=ExtResource("6_a8r6q")]
+position = Vector2(67, -79)
+
+[node name="CharacterBody2D9" parent="particals" instance=ExtResource("6_a8r6q")]
+position = Vector2(373, -196)
+dir_g = -1
+
+[node name="CharacterBody2D10" parent="particals" instance=ExtResource("6_a8r6q")]
+position = Vector2(401, -196)
+dir_g = -1
+
+[node name="CharacterBody2D11" parent="particals" instance=ExtResource("6_a8r6q")]
+position = Vector2(429, -196)
+dir_g = -1
+
+[node name="monsters" type="Node2D" parent="."]
+
+[node name="monster" parent="monsters" instance=ExtResource("6_lemrm")]
+position = Vector2(285, -82)
+
+[node name="monster2" parent="monsters" instance=ExtResource("6_lemrm")]
+position = Vector2(135, -188)
 dir_g = -1

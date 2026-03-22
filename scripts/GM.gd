@@ -1,6 +1,6 @@
 extends Node
 
-var levels = ["res://scenes/lvl_prototype.tscn", "res://scenes/lvl.tscn","res://scenes/lvl2.tscn"]
+var levels = ["res://scenes/lvl_prototype.tscn", "res://scenes/lvl.tscn","res://scenes/lvl2.tscn","res://scenes/lvl_3.tscn","res://scenes/lvl_4.tscn"]
 var un_locked = 0
 
 func _ready():

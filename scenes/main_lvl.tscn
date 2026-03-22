@@ -144,10 +144,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -370.75
+offset_left = -375.0
 offset_top = -159.0
 offset_right = 370.75
-offset_bottom = 159.0
+offset_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
@@ -253,28 +253,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hpfhs")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7g15e")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0i5g2")
 text = "8"
-
-[node name="level9" type="Button" parent="CanvasLayer/lvl_select/tow"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_0i5g2")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_0i5g2")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_hpfhs")
-theme_override_styles/hover = SubResource("StyleBoxFlat_7g15e")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0i5g2")
-text = "9"
-
-[node name="level10" type="Button" parent="CanvasLayer/lvl_select/tow"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_0i5g2")
-theme_override_font_sizes/font_size = 100
-theme_override_styles/normal = SubResource("StyleBoxFlat_0i5g2")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_hpfhs")
-theme_override_styles/hover = SubResource("StyleBoxFlat_7g15e")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0i5g2")
-text = "10"
 
 [node name="title" type="Label" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.20392157)

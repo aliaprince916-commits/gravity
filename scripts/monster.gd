@@ -4,16 +4,15 @@ extends CharacterBody2D
 @onready var director: RayCast2D = $director
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 # هذ المتغير لازم يكون في كل حاجة حاب نبدل لها الجاذبية
-var dir_g=1
+@export var dir_g=1
 var dir_m=1
 # متغيرا استطاعة الاستدار
 var can_turn=false
 const  SPEED=50
 func _physics_process(delta: float) -> void:
-	# معلومات مهمة حول متغير انجاه الجاذبية والبحث عن حوله في الارض او السقف مع الجاذبية صحيحة
-	var is_floor=is_grav(dir_g)
+	up_direction = Vector2.UP if dir_g == 1 else Vector2.DOWN
 	# جاذبية 
-	if not is_floor:
+	if not is_on_floor():
 		velocity+=get_gravity()*delta*dir_g
 	# حركة االوحش يمين ويسار
 	velocity.x=SPEED*dir_m
@@ -33,25 +32,17 @@ func _physics_process(delta: float) -> void:
 		director.target_position.y=-18
 	if dir_m>0:
 		animated_sprite_2d.play("walk")
-	move(is_floor)
+	move()
 	move_and_slide()
 
-func move(is_floor):
-	if is_floor:
+func move():
+	if is_on_floor():
 		if (is_on_wall() or !director.is_colliding()) and can_turn:
 			dir_m *= -1
 			can_turn = false
 		if !is_on_wall():
 			can_turn = true
 	pass
-# البحث عن هل هو في الجاذبية الصحيحة لتصحيح التجاه
-func is_grav(g):
-	if is_on_floor() and g==1:
-		return true
-	elif is_on_ceiling() and g==-1:
-		return true
-	else:
-		return false
 func die():
 	die_.play()
 	set_physics_process(false) 

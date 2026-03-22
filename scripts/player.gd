@@ -17,7 +17,7 @@ const MAX_VELOCITY=150
 @onready var die_: AudioStreamPlayer2D = $die_
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 # هذ المتغير لازم يكون في كل حاجة حاب نبدل لها الجاذبية
-var dir_p=1
+@export var dir_p=1
 
 func _physics_process(delta: float) -> void:
 	# 1. تحديث اتجاه الأعلى (Up Direction) بناءً على الجاذبية الحالية
@@ -39,7 +39,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	# تغير الكولليشن بحسب الجاذبية
+	$CollisionShape2D.position.x=-2 if dir_p==1 else 2
 	# 5. استدعاء الحركة (يجب أن يكون قبل فحص تصادم الصناديق)
 	move_and_slide()
 
@@ -123,6 +124,7 @@ func show_death_screen():
 	$CanvasLayer2/PauseButton.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 func _on_retry_pressed() -> void:
+	get_tree().paused = false 
 	get_tree().reload_current_scene()
 func _on_home_pressed() -> void:
 	# استبدل المسار أدناه بمسار مشهد القائمة الرئيسية عندك

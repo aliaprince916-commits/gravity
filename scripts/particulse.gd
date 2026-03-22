@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
-var dir_g=1
+@export var dir_g=1
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var is_floor=is_grav(dir_g)

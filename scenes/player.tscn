@@ -349,10 +349,10 @@ shape = SubResource("RectangleShape2D_dqkch")
 process_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer2/PauseMenu"]
-offset_left = -23.0
-offset_top = -25.0
-offset_right = 1189.0
-offset_bottom = 683.0
+offset_left = -26.0
+offset_top = -10.0
+offset_right = 1186.0
+offset_bottom = 698.0
 color = Color(0, 0, 0, 0.6156863)
 
 [node name="Control" type="VBoxContainer" parent="CanvasLayer2/PauseMenu"]
@@ -361,13 +361,25 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -285.0
-offset_top = -363.0
-offset_right = 285.0
-offset_bottom = -90.0
+offset_left = -274.0
+offset_top = -413.0
+offset_right = 268.0
+offset_bottom = -63.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 10
+theme_override_constants/separation = 5
+
+[node name="retry" type="Button" parent="CanvasLayer2/PauseMenu/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("6_tuyoq")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_fjrip")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_smehm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ur7pv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4r1p")
+text = "Retry
+"
 
 [node name="resume" type="Button" parent="CanvasLayer2/PauseMenu/Control"]
 process_mode = 3
@@ -444,6 +456,7 @@ stream = ExtResource("9_ur7pv")
 [connection signal="pressed" from="CanvasLayer/home" to="." method="_on_home_pressed"]
 [connection signal="pressed" from="CanvasLayer/retry" to="." method="_on_retry_pressed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="CanvasLayer2/PauseMenu/Control/retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/Control/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/Control/levels" to="." method="_on_levels_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/Control/Quit" to="." method="_on_quit_pressed"]

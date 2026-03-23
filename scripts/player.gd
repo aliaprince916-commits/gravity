@@ -113,10 +113,12 @@ func show_death_screen():
 	# 1. اختيار رسالة إنجليزية عشوائية
 	var messages = [
 		"FATAL ERROR: GRAVITY"  ,
-		"THE SHADOW CONSUMED YOU",
-		"WASTED IN THE VOID     ",
-		"GAME OVER,try again    ",
-		"no checkpoint"
+		"you must die",
+		"Forget your friends",
+		"All of this 
+		is your bad alone",
+		"Gravity empties",
+		"gravity is grave"
 	]
 	message_label.text = messages.pick_random()
 	
@@ -160,7 +162,7 @@ func _on_quit_pressed():
 func _on_levels_pressed() -> void:
 	click.play()
 	get_tree().paused = false 
-	Transition.change_scean("res://scenes/main_lvl.tscn",0,"")
+	Transition.change_scean("res://scenes/main_lvl.tscn",0,"levels")
 	pass # Replace with function body.
 
 

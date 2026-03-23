@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://da4i8liabeqt2"]
+[gd_scene load_steps=11 format=4 uid="uid://da4i8liabeqt2"]
 
 [ext_resource type="PackedScene" uid="uid://cfmjgl8haoem3" path="res://scenes/player.tscn" id="1_hpibf"]
 [ext_resource type="Texture2D" uid="uid://cugvtqiookld" path="res://assets/Textures&trees.png" id="2_6v2h5"]
 [ext_resource type="AudioStream" uid="uid://ct0dysve5dhmy" path="res://assets/dragon-studio-relaxing-rain-444802.mp3" id="4_ogqsu"]
 [ext_resource type="PackedScene" uid="uid://b6y12y7blqri6" path="res://scenes/fog.tscn" id="5_kbqdv"]
-[ext_resource type="AudioStream" uid="uid://ccc5meifcdtww" path="res://assets/freemusicforvideo-soft-background-music-409193.mp3" id="5_srdec"]
 [ext_resource type="PackedScene" uid="uid://cs3jt8mg6loe5" path="res://scenes/textures&trees.tscn" id="6_c8h66"]
 [ext_resource type="PackedScene" uid="uid://bin648v8uofu5" path="res://scenes/rain.tscn" id="7_c8h66"]
 [ext_resource type="PackedScene" uid="uid://bp28bnr788mv5" path="res://scenes/finich.tscn" id="10_xh4mi"]
@@ -173,11 +172,6 @@ zoom = Vector2(2.5, 2.5)
 stream = ExtResource("4_ogqsu")
 autoplay = true
 
-[node name="music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_srdec")
-autoplay = true
-area_mask = 2
-
 [node name="Textures&trees" parent="." instance=ExtResource("6_c8h66")]
 position = Vector2(128, -74)
 
@@ -191,10 +185,11 @@ position = Vector2(274, -24)
 emitting = true
 
 [node name="fog" parent="." instance=ExtResource("5_kbqdv")]
-offset_left = -18.0
-offset_top = -277.0
-offset_right = 481.0
-offset_bottom = 2.0
+z_index = 10
+offset_left = -19.0
+offset_top = -283.0
+offset_right = 480.0
+offset_bottom = -4.0
 
 [node name="Area2D" parent="." instance=ExtResource("10_xh4mi")]
 position = Vector2(348, -194)

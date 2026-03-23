@@ -1,14 +1,13 @@
-[gd_scene load_steps=12 format=4 uid="uid://gbfbhktwakum"]
+[gd_scene load_steps=11 format=4 uid="uid://gbfbhktwakum"]
 
 [ext_resource type="PackedScene" uid="uid://cfmjgl8haoem3" path="res://scenes/player.tscn" id="1_0o530"]
 [ext_resource type="Texture2D" uid="uid://cugvtqiookld" path="res://assets/Textures&trees.png" id="2_s5vkl"]
-[ext_resource type="AudioStream" uid="uid://ct0dysve5dhmy" path="res://assets/dragon-studio-relaxing-rain-444802.mp3" id="3_d474t"]
 [ext_resource type="PackedScene" uid="uid://cs3jt8mg6loe5" path="res://scenes/textures&trees.tscn" id="4_4nwc7"]
-[ext_resource type="PackedScene" uid="uid://bin648v8uofu5" path="res://scenes/rain.tscn" id="5_h8j34"]
 [ext_resource type="PackedScene" uid="uid://b6y12y7blqri6" path="res://scenes/fog.tscn" id="6_rv0fw"]
 [ext_resource type="PackedScene" uid="uid://bp28bnr788mv5" path="res://scenes/finich.tscn" id="7_upgc2"]
 [ext_resource type="PackedScene" uid="uid://cvcu8vln05hgw" path="res://scenes/particulse.tscn" id="8_g5ppj"]
 [ext_resource type="PackedScene" uid="uid://crh4ruqbrgkis" path="res://scenes/lvl2.tscn" id="8_s5vkl"]
+[ext_resource type="AudioStream" uid="uid://cpsta76r4711k" path="res://assets/ES_Beyond Dreams - Calm Shores.mp3" id="10_d474t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w3yln"]
 texture = ExtResource("2_s5vkl")
@@ -169,21 +168,12 @@ tile_set = SubResource("TileSet_qyfom")
 position = Vector2(233, -133)
 zoom = Vector2(2.5, 2.5)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_d474t")
-autoplay = true
-
 [node name="Textures&trees" parent="." instance=ExtResource("4_4nwc7")]
 position = Vector2(128, -74)
 
 [node name="Textures&trees2" parent="." instance=ExtResource("4_4nwc7")]
 position = Vector2(322, -202)
 rotation = 3.1411173
-
-[node name="rain" parent="." instance=ExtResource("5_h8j34")]
-z_index = -2
-position = Vector2(274, -24)
-emitting = true
 
 [node name="fog" parent="." instance=ExtResource("6_rv0fw")]
 offset_left = -18.0
@@ -196,16 +186,55 @@ position = Vector2(348, -194)
 rotation = -3.1513636
 target = ExtResource("8_s5vkl")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("8_g5ppj")]
-position = Vector2(34, -187)
-scale = Vector2(2.2700217, 3.1381328)
+[node name="particals1" type="Node2D" parent="."]
+position = Vector2(4, -11)
+metadata/_edit_group_ = true
+
+[node name="CharacterBody2D" parent="particals1" instance=ExtResource("8_g5ppj")]
+position = Vector2(33, -188)
 dir_g = -1
 
-[node name="CharacterBody2D2" parent="." instance=ExtResource("8_g5ppj")]
-position = Vector2(257, -193)
-scale = Vector2(2.1606956, 2.830954)
+[node name="CharacterBody2D2" parent="particals1" instance=ExtResource("8_g5ppj")]
+position = Vector2(61, -188)
 dir_g = -1
 
-[node name="CharacterBody2D3" parent="." instance=ExtResource("8_g5ppj")]
-position = Vector2(148, -99)
-scale = Vector2(-3.8845081, 4.45604)
+[node name="CharacterBody2D3" parent="particals1" instance=ExtResource("8_g5ppj")]
+position = Vector2(89, -188)
+dir_g = -1
+
+[node name="CharacterBody2D4" parent="particals1" instance=ExtResource("8_g5ppj")]
+position = Vector2(117, -188)
+dir_g = -1
+
+[node name="particals2" type="Node2D" parent="."]
+position = Vector2(-1, 2)
+metadata/_edit_group_ = true
+
+[node name="CharacterBody2D" parent="particals2" instance=ExtResource("8_g5ppj")]
+position = Vector2(177, -86)
+
+[node name="CharacterBody2D2" parent="particals2" instance=ExtResource("8_g5ppj")]
+position = Vector2(205, -86)
+
+[node name="CharacterBody2D3" parent="particals2" instance=ExtResource("8_g5ppj")]
+position = Vector2(233, -86)
+
+[node name="CharacterBody2D4" parent="particals2" instance=ExtResource("8_g5ppj")]
+position = Vector2(261, -86)
+
+[node name="particals3" type="Node2D" parent="."]
+position = Vector2(5, 3)
+metadata/_edit_group_ = true
+
+[node name="CharacterBody2D" parent="particals3" instance=ExtResource("8_g5ppj")]
+position = Vector2(292, -203)
+dir_g = -1
+
+[node name="CharacterBody2D2" parent="particals3" instance=ExtResource("8_g5ppj")]
+position = Vector2(320, -203)
+dir_g = -1
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_d474t")
+autoplay = true
+bus = &"music"

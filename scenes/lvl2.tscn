@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=4 uid="uid://crh4ruqbrgkis"]
+[gd_scene load_steps=12 format=4 uid="uid://crh4ruqbrgkis"]
 
 [ext_resource type="PackedScene" uid="uid://cfmjgl8haoem3" path="res://scenes/player.tscn" id="1_hnnuc"]
 [ext_resource type="Texture2D" uid="uid://cugvtqiookld" path="res://assets/Textures&trees.png" id="2_c8sub"]
-[ext_resource type="AudioStream" uid="uid://ct0dysve5dhmy" path="res://assets/dragon-studio-relaxing-rain-444802.mp3" id="3_hva3n"]
+[ext_resource type="AudioStream" uid="uid://cpsta76r4711k" path="res://assets/ES_Beyond Dreams - Calm Shores.mp3" id="3_r7wj8"]
 [ext_resource type="PackedScene" uid="uid://cs3jt8mg6loe5" path="res://scenes/textures&trees.tscn" id="4_kl22a"]
-[ext_resource type="PackedScene" uid="uid://bin648v8uofu5" path="res://scenes/rain.tscn" id="5_kpy5e"]
 [ext_resource type="PackedScene" uid="uid://b6y12y7blqri6" path="res://scenes/fog.tscn" id="6_8yxcp"]
 [ext_resource type="PackedScene" uid="uid://bp28bnr788mv5" path="res://scenes/finich.tscn" id="7_ldvkq"]
 [ext_resource type="PackedScene" uid="uid://chkvdrwoivjbq" path="res://scenes/gr_h.tscn" id="8_3jqp1"]
@@ -171,26 +170,22 @@ position = Vector2(233, -133)
 zoom = Vector2(2.5, 2.5)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_hva3n")
+stream = ExtResource("3_r7wj8")
 autoplay = true
+bus = &"music"
 
 [node name="Textures&trees" parent="." instance=ExtResource("4_kl22a")]
-position = Vector2(128, -74)
+position = Vector2(342, -72)
 
 [node name="Textures&trees2" parent="." instance=ExtResource("4_kl22a")]
-position = Vector2(322, -202)
+position = Vector2(168, -197.99998)
 rotation = 3.1411173
 
-[node name="rain" parent="." instance=ExtResource("5_kpy5e")]
-z_index = -2
-position = Vector2(274, -24)
-emitting = true
-
 [node name="fog" parent="." instance=ExtResource("6_8yxcp")]
-offset_left = -18.0
-offset_top = -277.0
-offset_right = 481.0
-offset_bottom = 2.0
+offset_left = -23.0
+offset_top = -279.0
+offset_right = 476.0
+offset_bottom = 0.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Area2D" parent="." instance=ExtResource("7_ldvkq")]
@@ -198,15 +193,41 @@ position = Vector2(348, -194)
 rotation = -3.1513636
 target = ExtResource("8_c8sub")
 
-[node name="gr_ch" parent="." instance=ExtResource("8_3jqp1")]
-position = Vector2(159, -77)
-scale = Vector2(4.1894546, 4.376321)
+[node name="particals2" type="Node2D" parent="."]
+position = Vector2(-75, 17)
+metadata/_edit_group_ = true
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("9_wxq22")]
-position = Vector2(176, -81)
-scale = Vector2(6.96, 3.8)
+[node name="CharacterBody2D" parent="particals2" instance=ExtResource("9_wxq22")]
+position = Vector2(177, -86)
 
-[node name="CharacterBody2D2" parent="." instance=ExtResource("9_wxq22")]
-position = Vector2(198, -192)
-scale = Vector2(6.96, 3.8)
+[node name="CharacterBody2D2" parent="particals2" instance=ExtResource("9_wxq22")]
+position = Vector2(205, -86)
+
+[node name="CharacterBody2D3" parent="particals2" instance=ExtResource("9_wxq22")]
+position = Vector2(233, -86)
+
+[node name="CharacterBody2D4" parent="particals2" instance=ExtResource("9_wxq22")]
+position = Vector2(261, -86)
+
+[node name="particals1" type="Node2D" parent="."]
+position = Vector2(76, -14)
+metadata/_edit_group_ = true
+
+[node name="CharacterBody2D" parent="particals1" instance=ExtResource("9_wxq22")]
+position = Vector2(33, -188)
 dir_g = -1
+
+[node name="CharacterBody2D2" parent="particals1" instance=ExtResource("9_wxq22")]
+position = Vector2(61, -188)
+dir_g = -1
+
+[node name="CharacterBody2D3" parent="particals1" instance=ExtResource("9_wxq22")]
+position = Vector2(89, -188)
+dir_g = -1
+
+[node name="CharacterBody2D4" parent="particals1" instance=ExtResource("9_wxq22")]
+position = Vector2(117, -188)
+dir_g = -1
+
+[node name="gr_ch" parent="." instance=ExtResource("8_3jqp1")]
+position = Vector2(104, -67)

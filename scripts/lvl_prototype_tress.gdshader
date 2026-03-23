@@ -15,5 +15,5 @@ void vertex() {
     float time = TIME * speed;
     
     // 3. نحرك النقاط (Vertices) أفقياً (VERTEX.x)
-    VERTEX.x += sin(time + VERTEX.y + VERTEX.x) * strength*30.0;
+    VERTEX.x += sin(time + VERTEX.y + VERTEX.x) * strength*50.0;
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cfmjgl8haoem3"]
+[gd_scene load_steps=44 format=3 uid="uid://cfmjgl8haoem3"]
 
 [ext_resource type="Script" uid="uid://cswrw8mua76u" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://db55hkfgodnf6" path="res://assets/AnimationSheet_Character (1).png" id="2_qhqgy"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://8muqk22fpwd5" path="res://assets/Icons_Essential/AmaticSC-Bold.ttf" id="6_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://c1acj8f0m0hvp" path="res://assets/universfield-computer-mouse-click-02-383961 (1).mp3" id="8_smehm"]
 [ext_resource type="AudioStream" uid="uid://hidw072erk20" path="res://assets/hurt.wav" id="9_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://qpq1qwx1e00n" path="res://assets/arrow_right.png" id="10_y4r1p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("2_qhqgy")
@@ -240,6 +241,18 @@ shadow_offset = Vector2(0, 3)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qfm1y"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2wvv"]
+size = Vector2(70, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3v2ag"]
+size = Vector2(110, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jej6c"]
+size = Vector2(110, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ej7"]
+size = Vector2(70, 50)
+
 [node name="player" type="CharacterBody2D" groups=["die"]]
 script = ExtResource("1_g2els")
 shadow_scene = ExtResource("2_qlg0r")
@@ -369,18 +382,6 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 5
 
-[node name="retry" type="Button" parent="CanvasLayer2/PauseMenu/Control"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("6_tuyoq")
-theme_override_font_sizes/font_size = 58
-theme_override_styles/normal = SubResource("StyleBoxFlat_fjrip")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_smehm")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ur7pv")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y4r1p")
-text = "Retry
-"
-
 [node name="resume" type="Button" parent="CanvasLayer2/PauseMenu/Control"]
 process_mode = 3
 layout_mode = 2
@@ -406,6 +407,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_d2wvv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3v2ag")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jej6c")
 text = "levels
+"
+
+[node name="retry" type="Button" parent="CanvasLayer2/PauseMenu/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("6_tuyoq")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_fjrip")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_smehm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ur7pv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4r1p")
+text = "Retry
 "
 
 [node name="Quit" type="Button" parent="CanvasLayer2/PauseMenu/Control"]
@@ -453,11 +466,121 @@ stream = ExtResource("8_smehm")
 [node name="die_" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_ur7pv")
 
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="resume" type="Button" parent="CanvasLayer3"]
+process_mode = 3
+offset_left = 224.0
+offset_top = 497.0
+offset_right = 342.0
+offset_bottom = 571.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("6_tuyoq")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_y4r1p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d2wvv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3v2ag")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jej6c")
+
+[node name="right" type="TouchScreenButton" parent="CanvasLayer3/resume"]
+position = Vector2(58, 40.000122)
+scale = Vector2(1.6842105, 1.1960784)
+shape = SubResource("RectangleShape2D_d2wvv")
+action = "move_right"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer3/resume"]
+position = Vector2(59.000008, 40)
+scale = Vector2(0.5156252, 0.390625)
+texture = ExtResource("10_y4r1p")
+
+[node name="resume2" type="Button" parent="CanvasLayer3"]
+process_mode = 3
+offset_left = 919.0
+offset_top = 409.0
+offset_right = 1037.0
+offset_bottom = 483.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("6_tuyoq")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_y4r1p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d2wvv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3v2ag")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jej6c")
+
+[node name="Label" type="Label" parent="CanvasLayer3/resume2"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 9.0
+offset_right = 82.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 42
+text = "G"
+horizontal_alignment = 1
+
+[node name="gravity" type="TouchScreenButton" parent="CanvasLayer3/resume2"]
+position = Vector2(58, 39)
+shape = SubResource("RectangleShape2D_3v2ag")
+action = "gravity"
+
+[node name="resume3" type="Button" parent="CanvasLayer3"]
+process_mode = 3
+offset_left = 914.0
+offset_top = 513.0
+offset_right = 1032.0
+offset_bottom = 587.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("6_tuyoq")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_y4r1p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d2wvv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3v2ag")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jej6c")
+
+[node name="jump" type="TouchScreenButton" parent="CanvasLayer3/resume3"]
+position = Vector2(59, 38)
+shape = SubResource("RectangleShape2D_jej6c")
+action = "jump"
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer3/resume3"]
+position = Vector2(58.99998, 37.999992)
+rotation = -1.5707964
+scale = Vector2(0.3864813, 0.44822842)
+texture = ExtResource("10_y4r1p")
+
+[node name="resume4" type="Button" parent="CanvasLayer3"]
+process_mode = 3
+offset_left = 42.0
+offset_top = 497.0
+offset_right = 160.0
+offset_bottom = 571.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("6_tuyoq")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_y4r1p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d2wvv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3v2ag")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jej6c")
+
+[node name="left" type="TouchScreenButton" parent="CanvasLayer3/resume4"]
+position = Vector2(59, 39)
+scale = Vector2(1.5789475, 1.2156863)
+shape = SubResource("RectangleShape2D_f1ej7")
+action = "move_left"
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer3/resume4"]
+position = Vector2(59.000015, 40)
+scale = Vector2(-0.516, -0.391)
+texture = ExtResource("10_y4r1p")
+
 [connection signal="pressed" from="CanvasLayer/home" to="." method="_on_home_pressed"]
 [connection signal="pressed" from="CanvasLayer/retry" to="." method="_on_retry_pressed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="pressed" from="CanvasLayer2/PauseMenu/Control/retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/Control/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/Control/levels" to="." method="_on_levels_pressed"]
+[connection signal="pressed" from="CanvasLayer2/PauseMenu/Control/retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseMenu/Control/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="CanvasLayer2/PauseButton" to="." method="_on_pause_button_pressed"]

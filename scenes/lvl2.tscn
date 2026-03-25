@@ -158,7 +158,7 @@ sources/0 = SubResource("TileSetAtlasSource_hva3n")
 
 [node name="player" parent="." instance=ExtResource("1_hnnuc")]
 z_index = 1
-position = Vector2(43, -90)
+position = Vector2(47, -81)
 ghost_enabeld = false
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -172,7 +172,6 @@ zoom = Vector2(2.5, 2.5)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_r7wj8")
 autoplay = true
-bus = &"music"
 
 [node name="Textures&trees" parent="." instance=ExtResource("4_kl22a")]
 position = Vector2(342, -72)
@@ -230,4 +229,4 @@ position = Vector2(117, -188)
 dir_g = -1
 
 [node name="gr_ch" parent="." instance=ExtResource("8_3jqp1")]
-position = Vector2(104, -67)
+position = Vector2(105, -68)

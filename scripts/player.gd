@@ -29,12 +29,13 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta * dir_p
 
 	# 3. معالجة القفز (is_on_floor الآن تعمل في السقف والأرض بفضل up_direction)
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		
 		velocity.y = JUMP_VELOCITY * dir_p
 		jump.play()
 
 	# 4. معالجة الحركة الأفقية
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := Input.get_axis("move_left","move_right",)
 	if direction:
 		velocity.x = direction * SPEED
 	else:
@@ -52,7 +53,7 @@ func _physics_process(delta: float) -> void:
 			collision_box.apply_central_impulse(collision.get_normal()*-PUSH)
 
 	# 7. تغيير الجاذبية (الضغط على زر G)
-	if Input.is_action_just_pressed("g") and is_on_floor():
+	if Input.is_action_just_pressed("gravity") and is_on_floor():
 		dir_p *= -1
 		g.play()
 		# اختيار بكسل آرت: قلب الأنميشن فوراً
@@ -74,6 +75,7 @@ func update_animations(direction):
 var is_dead: bool = false # تعريف المتغير في أعلى الملف
 
 func die():
+	$CanvasLayer3.visible=false
 	if is_dead: 
 		return # لمنع استدعاء الدالة أكثر من مرة
 	
@@ -141,6 +143,7 @@ func _ready():
 	$CanvasLayer2/PauseButton.show() 
 
 func _on_pause_button_pressed():
+	$CanvasLayer3.visible=false
 	get_tree().paused = true
 	$CanvasLayer2/PauseMenu.show()   # تظهر القائمة الآن فوق كل شيء
 	$CanvasLayer2/PauseButton.hide() # اختياري: إذا أردت إخفاء الزر الصغير لكي لا يظهر خلف القائمة
@@ -151,7 +154,8 @@ func _on_resume_pressed():
 	click.play()
 	get_tree().paused = false  # تشغيل اللعبة
 	pause_menu.hide()          # إخفاء القائمة
-	pause_button.show()     # إظهار زر البوز
+	pause_button.show()
+	$CanvasLayer3.visible=true
 
 # 3. وظيفة زر الخروج (Quit)
 func _on_quit_pressed():

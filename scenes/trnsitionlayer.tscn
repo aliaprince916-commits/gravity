@@ -98,7 +98,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.16206557, 0.1620656, 0.16206557, 1)
 theme_override_fonts/font = ExtResource("2_av5vk")
 theme_override_font_sizes/font_size = 130
-text = "  level1  "
+text = "  levels"
 
 [node name="click" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_yh5ee")
